@@ -66,6 +66,3 @@ launch/sensing.launch.xml : 전체 sensing launch
 
 ---
 
-초기 실차 통합에서는 전체 센서를 한 번에 붙이더라도, 문제를 좁히기 위해 LiDAR, TF, pointcloud, localization, GNSS/IMU, Camera 순서로 확인한다.
-
-Autoware 기본 localization은 LiDAR pointcloud와 PCD map 기반 NDT scan matching을 중심으로 동작하며, GNSS와 IMU는 초기 위치 추정, 자세 안정화, pose 보정에 활용된다.
