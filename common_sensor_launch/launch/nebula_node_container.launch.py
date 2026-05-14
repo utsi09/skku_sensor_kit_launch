@@ -32,6 +32,8 @@ def get_lidar_make(sensor_name):
         return "Hesai", ".csv"
     elif sensor_name[:3].lower() in ["hdl", "vlp", "vls"]:
         return "Velodyne", ".yaml"
+    elif sensor_name.lower() in ["helios", "bpearl"]:
+        return "Robosense", None
     return "unrecognized_sensor_model"
 
 
@@ -72,7 +74,7 @@ def launch_setup(context, *args, **kwargs):
     sensor_make, sensor_extension = get_lidar_make(sensor_model)
 
     # Calibration file
-    if sensor_extension is not None:
+    if sensor_extension is not None:  # Velodyne and Hesai
         sensor_calib_fp = PathJoinSubstitution(
             [
                 FindPackageShare("nebula_" + sensor_make.lower() + "_decoders"),
@@ -80,7 +82,7 @@ def launch_setup(context, *args, **kwargs):
                 sensor_model + sensor_extension,
             ]
         )
-    else:
+    else:  # Robosense
         sensor_calib_fp = ""
 
     # Pointcloud preprocessor parameters
@@ -121,6 +123,7 @@ def launch_setup(context, *args, **kwargs):
                         "rotation_speed",
                         "packet_mtu_size",
                         "setup_sensor",
+                        "udp_only",
                     ),
                 },
             ],
@@ -128,6 +131,8 @@ def launch_setup(context, *args, **kwargs):
                 # cSpell:ignore knzo25
                 # TODO(knzo25): fix the remapping once nebula gets updated
                 ("velodyne_points", "pointcloud_raw_ex"),
+                # ("robosense_points", "pointcloud_raw_ex"), #for robosense
+                # ("pandar_points", "pointcloud_raw_ex"), # for hesai
             ],
             extra_arguments=[{"use_intra_process_comms": LaunchConfiguration("use_intra_process")}],
         )
@@ -219,7 +224,7 @@ def launch_setup(context, *args, **kwargs):
     # set container to run all required components in the same process
     container = ComposableNodeContainer(
         name=LaunchConfiguration("container_name"),
-        namespace="autoware_pointcloud_preprocessor",
+        namespace="pointcloud_preprocessor",
         package="rclcpp_components",
         executable=LaunchConfiguration("container_executable"),
         composable_node_descriptions=nodes,
@@ -269,7 +274,7 @@ def generate_launch_description():
         "distortion_correction_node_param_path",
         PathJoinSubstitution(
             [
-                FindPackageShare("single_lidar_common_launch"),
+                FindPackageShare("common_sensor_launch"),
                 "config",
                 "distortion_corrector_node.param.yaml",
             ]
@@ -280,13 +285,14 @@ def generate_launch_description():
         "ring_outlier_filter_node_param_path",
         PathJoinSubstitution(
             [
-                FindPackageShare("single_lidar_common_launch"),
+                FindPackageShare("common_sensor_launch"),
                 "config",
                 "ring_outlier_filter_node.param.yaml",
             ]
         ),
         description="path to parameter file of ring outlier filter node",
     )
+    add_launch_arg("udp_only", "False", "use UDP only")
 
     set_container_executable = SetLaunchConfiguration(
         "container_executable",

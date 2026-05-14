@@ -1,9 +1,9 @@
 <launch>
   <!-- Params -->
   <arg name="launch_driver" default="true"/>
-  <arg name="model" default="VLP16"/>
-  <arg name="max_range" default="130.0"/>
-  <arg name="min_range" default="0.4"/>
+  <arg name="model" default="VLS128"/>
+  <arg name="max_range" default="250.0"/>
+  <arg name="min_range" default="0.5"/>
   <arg name="sensor_frame" default="velodyne"/>
   <arg name="return_mode" default="SingleStrongest"/>
   <arg name="sensor_ip" default="192.168.1.201"/>
@@ -14,8 +14,9 @@
   <arg name="cloud_max_angle" default="360"/>
   <arg name="vehicle_mirror_param_file"/>
   <arg name="container_name" default="velodyne_node_container"/>
+  <arg name="udp_only" default="false"/>
 
-  <include file="$(find-pkg-share single_lidar_common_launch)/launch/nebula_node_container.launch.py">
+  <include file="$(find-pkg-share common_sensor_launch)/launch/nebula_node_container.launch.py">
     <arg name="launch_driver" value="$(var launch_driver)"/>
     <arg name="sensor_model" value="$(var model)"/>
     <arg name="return_mode" value="$(var return_mode)"/>
@@ -30,8 +31,9 @@
     <arg name="cloud_max_angle" value="$(var cloud_max_angle)"/>
     <arg name="vehicle_mirror_param_file" value="$(var vehicle_mirror_param_file)"/>
     <arg name="use_intra_process" value="true"/>
-    <arg name="use_multithread" value="false"/>
+    <arg name="use_multithread" value="true"/>
     <arg name="container_name" value="$(var container_name)"/>
+    <arg name="udp_only" value="$(var udp_only)"/>
   </include>
 
   <!-- Velodyne Monitor -->

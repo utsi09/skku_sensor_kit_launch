@@ -1,34 +1,46 @@
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package skku_sensor_kit_description
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package common_sensor_launch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 0.51.0 (2026-05-01)
 -------------------
+* Merge remote-tracking branch 'origin/main' into tmp/bot/bump_version_base
+* refactor: replace ament_index_python with launch.substitutions (`#1762 <https://github.com/autowarefoundation/autoware_launch/issues/1762>`_)
+  * refactor: replace ament_index_python with launch.substitutions
+  * flatten nested pathjoinsubstitution
+  ---------
+* feat(autoware_launch, sendor_kit): remove glog component load (`#1778 <https://github.com/autowarefoundation/autoware_launch/issues/1778>`_)
+  * feat: remove glog component load
+  * fix: remove unnecessary import
+  ---------
+* Contributors: Taeseung Sohn, Tetsuhiro Kawaguchi, github-actions
 
 0.50.0 (2026-02-13)
 -------------------
+* Merge remote-tracking branch 'origin/main' into tmp/bot/bump_version_base
+* feat: change nebula function call style according to nebula v0.3.2 (`#1749 <https://github.com/autowarefoundation/autoware_launch/issues/1749>`_)
+* Contributors: github-actions, 心刚
 
 0.49.0 (2025-12-30)
 -------------------
-* Merge remote-tracking branch 'origin/main' into prepare-changelog-0.49.0
-* feat: remove sensor component dependency (`#1722 <https://github.com/autowarefoundation/autoware_launch/issues/1722>`_)
-* Contributors: Ryohsuke Mitsudome, Takagi, Isamu
 
 0.48.0 (2025-11-16)
 -------------------
-* Merge remote-tracking branch 'origin/main' into release-humble-0.48.0
-* fix: add missing exec_depends for sensor description (`#1699 <https://github.com/autowarefoundation/autoware_launch/issues/1699>`_)
-  * fix: add missing exec_depends for sensor description
-  * style(pre-commit): autofix
-  ---------
-  Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
-* Contributors: Ryohsuke Mitsudome, mitsudome-r
 
 0.47.0 (2025-08-11)
 -------------------
 
 0.46.0 (2025-06-20)
 -------------------
+* Merge remote-tracking branch 'origin/main' into tmp/bot/bump_version_base
+* feat: add paramter for diag msg (`#1429 <https://github.com/autowarefoundation/autoware_launch/issues/1429>`_)
+  * feat: add paramter for diag msg
+  * chore: update mismatch threshold
+  * chore: udpate variable name
+  * chore: fix parameter naming
+  * chore: add cropbox parameter
+  ---------
+* Contributors: Yi-Hsiang Fang (Vivid), github-actions
 
 0.45.3 (2025-07-17)
 -------------------
@@ -41,6 +53,9 @@ Changelog for package skku_sensor_kit_description
 
 0.45.0 (2025-05-22)
 -------------------
+* Merge remote-tracking branch 'origin/main' into tmp/bot/bump_version_base
+* feat(ring_outlier_filter): update node parameters (`#1421 <https://github.com/autowarefoundation/autoware_launch/issues/1421>`_)
+* Contributors: Kotaro Uetake, github-actions
 
 0.44.3 (2025-06-10)
 -------------------
@@ -55,7 +70,9 @@ Changelog for package skku_sensor_kit_description
 -------------------
 * Merge commit 'bdbc8e8' into bump-up-version-to-0.44.0
 * chore: bump version to 0.44.0 (`#1411 <https://github.com/autowarefoundation/autoware_launch/issues/1411>`_)
-* feat: remove individual_params references (`#1403 <https://github.com/autowarefoundation/autoware_launch/issues/1403>`_)
+* chore: set all versions to 0.43.0 (`#1384 <https://github.com/autowarefoundation/autoware_launch/issues/1384>`_)
+* feat(*_launch): move here (`#1369 <https://github.com/autowarefoundation/autoware_launch/issues/1369>`_)
+* Contributors: Mete Fatih Cırıt, Ryohsuke Mitsudome, Yutaka Kondo
 
 0.43.1 (2025-04-01)
 -------------------
@@ -68,14 +85,94 @@ Changelog for package skku_sensor_kit_description
 
 0.41.0 (2025-02-12)
 -------------------
+* fix: add `udp_only` (`#109 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/109>`_)
+  Added udp_only
+* feat(common_sensor_launch): rename velodyne_monitor to autoware_velodyne_monitor (`#119 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/119>`_)
+* Contributors: Ryohsuke Mitsudome, SakodaShintaro
 
 0.40.0 (2025-01-17)
 -------------------
+* Merge branch 'main' into release-0.40.0
+* fix(nebula_node_container.launch.py): autoware_glog_component (`#112 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/112>`_)
+  Fixed autoware_glog_component
+* refactor(glog_component): prefix package and namespace with autoware (`#110 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/110>`_)
+* Contributors: Esteve Fernandez, Ryohsuke Mitsudome, SakodaShintaro
 
 0.39.0 (2024-12-09)
 -------------------
+* chore(common_sensor_launch): add distortion corrector parameter (`#105 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/105>`_)
+  chore: add parameter
+* chore(nebula_node_container): make launchers work with Nebula v0.2.0 (`#106 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/106>`_)
+* feat(common_sensor_launch): ring outlier filter load from param file (`#103 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/103>`_)
+  * feat: ring outlier filter load from param file
+  * fix: fix variable name
+  * chore: fix description
+  ---------
+* feat: add robosense Bpearl and Helios Lidar launch files for users (`#102 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/102>`_)
+* refactor!: pointcloud_preprocessor prefix package and namespace with autoware (`#95 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/95>`_)
+  * refactor!: pointcloud_preprocessor prefix package and namespace with autoware
+  * style(pre-commit): autofix
+  ---------
+  Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+* chore: remapped topics for the point type migration (`#94 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/94>`_)
+  chore: remapped topics to match the temporary fix for the sensing point migration
+* feat(pointcloud_preprocessor): load_distortion_parameter_from_yaml (`#93 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/93>`_)
+  * feat: load distortion parameter from yaml
+  * chore: fix spell error
+  * feat: modify the nebula_node_container based on tier4 internal common_sensor_launch
+  * chore: use ParameterFile to load param
+  ---------
+* fix(nebula node container): fix if condition for ring outlier filter (`#92 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/92>`_)
+  fix nebula node container
+* feat(common_sensor_launch, pointcloud_preprocessor): change pointcloud interface to synchronized pointclouds (`#91 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/91>`_)
+  * feat: edn
+  * fix: suppress spell-check
+  * style(pre-commit): autofix
+  * feat: interface change in sensing lidar pointcloud. use synchronized pointcloud as sensor interface
+  ---------
+  Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+* feat: change pointcloud preprocess output from base_link to sensor_frame (`#90 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/90>`_)
+  * feat: edn
+  * fix: suppress spell-check
+  * style(pre-commit): autofix
+  ---------
+  Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+* chore(nebula_node_container): enhance logging (`#86 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/86>`_)
+* feat: always separate lidar preprocessing from pointcloud_container (`#85 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/85>`_)
+  * feat!: replace use_pointcloud_container
+  * style(pre-commit): autofix
+  * fix: now works
+  * revert: revert unnecessary change
+  * include_concat_node_in_pointcloud_container to use_pointcloud_container
+  * style(pre-commit): autofix
+  * fix arg name
+  ---------
+  Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+* refactor: rename lidar topic (`#82 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/82>`_)
+  rename lidar topic
+  Co-authored-by: yamato-ando <Yamato ANDO>
+* fix(nebula launch): remove loading of parameters from default config file (`#74 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/74>`_)
+  * fix(nebula launch): remove loading of parameters from default configuration file
+  * chore(nebula launch): remove orphaned directory variable
+  * chore(nebula launch): remove unused import
+  ---------
+* refactor(nebula launch): consistent naming for sensor_ip parameter (`#72 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/72>`_)
+* fix(nebula launch): rotation_speed type (`#71 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/71>`_)
+  fix rotation_speed type
+* fix(common_sensor_launch): add nebula to package.xml (`#65 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/65>`_)
+* feat: change from velodyne_vls to nebula driver (`#64 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/64>`_)
+  * feat: change from velodyne_vls to nebula driver
+  * style(pre-commit): autofix
+  ---------
+  Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
 * chore: update maintainer (`#60 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/60>`_)
-* fix: suppress xacro warning (`#51 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/51>`_)
+* feat(skku_sensor_kit_launch): pass container to velodyne nodes (`#48 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/48>`_)
+  * feat(skku_sensor_kit_launch): pass container to velodyne nodes
+  * feat(skku_sensor_kit_launch): align true/false
+* feat(common_sensor_launch): change interpolate to distortion_corrector (`#41 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/41>`_)
+  * feat(common_sensor_launch): change interpolate to distortion_corrector
+  * Fix input topic
+* feat: load global parameter (`#31 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/31>`_)
 * ci(pre-commit): update pre-commit-hooks-ros (`#16 <https://github.com/autowarefoundation/skku_sensor_kit_launch/issues/16>`_)
   * ci(pre-commit): update pre-commit-hooks-ros
   * ci(pre-commit): autofix
@@ -452,4 +549,4 @@ Changelog for package skku_sensor_kit_description
   Co-authored-by: Keisuke Shima <19993104+KeisukeShima@users.noreply.github.com>
   Co-authored-by: Satoshi OTA <44889564+satoshi-ota@users.noreply.github.com>
   Co-authored-by: Shinnosuke Hirakawa <8327162+0x126@users.noreply.github.com>
-* Contributors: Daisuke Nishimatsu, Kenji Miyake
+* Contributors: Amadeusz Szymko, David Wong, Ismet Atabay, Kaan Çolak, Kenji Miyake, Kenzo Lobos Tsunekawa, Max Schmeller, Shunsuke Miura, Takeshi Miura, Yamato Ando, Yi-Hsiang Fang (Vivid), Yoshi Ri, Yukihiro Saito, kminoda
